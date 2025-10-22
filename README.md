@@ -1,6 +1,12 @@
 <<<<<<< HEAD
 # Career-Cracker-
-Career Cracker is an AI-powered career development platform offering personalized career guidance, aptitude tests, interview simulations, and real-time chatbot support to help users make confident and informed career decisions.
+Career Cracker is a cutting-edge career development platform designed to empower individuals in today’s fast-changing and competitive job market. Leveraging Artificial Intelligence (AI) and Machine Learning (ML), it provides personalized career guidance for students, professionals, and mentors.
+
+The platform simplifies career decision-making by offering AI-powered career suggestions, aptitude tests, interview simulations, and continuous performance evaluations. A built-in chatbot enhances user engagement by providing real-time career advice, study materials, and grooming tips — ensuring users are always prepared for their goals.
+
+Career Cracker is developed using Python and Django for the backend, and JavaScript, HTML, CSS, and Bootstrap for the frontend. It integrates essential libraries like NumPy, Pandas, Scikit-Learn, Matplotlib, and NLTK for data processing, visualization, machine learning, and natural language processing.
+
+Organized into Admin, Staff, and User modules, Career Cracker delivers smooth account management, assessment tracking, and resource sharing — making it a complete, intelligent, and user-friendly platform for career growth and development.
 =======
 # Online Quiz
 ![developer](https://img.shields.io/badge/Developed%20By%20%3A-Sumit%20Kumar-red)
