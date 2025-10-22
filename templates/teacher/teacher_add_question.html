@@ -1,0 +1,145 @@
+{% extends 'teacher/teacherbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #d8e6ec;  /* Light blue background for the entire page */
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2d8b92;  /* Blue color for the title */
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #5393cf;  /* White background for the form */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            background-color: #60d2df;  /* Light green background for the form */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #e3e3de;  /* Green color when input is focused */
+            box-shadow: 0 0 5px rgba(0, 204, 0, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #0c8486;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #4585a0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 204, 0, 0.3);
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 5px rgba(0, 204, 0, 0.5);
+        }
+
+        /* Responsive design for mobile screens */
+        @media (max-width: 576px) {
+            .form-container {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<div class="form-container">
+    <h2>Add Question</h2>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="course">Course</label>
+            {% render_field questionForm.courseID|attr:'required:true' class="form-control" %}
+        </div>
+
+        <div class="form-group">
+            <label for="question">Question</label>
+            {% render_field questionForm.question|attr:'required:true' class="form-control" placeholder="What is the currency of India?" %}
+        </div>
+
+        <div class="form-group">
+            <label for="marks">Marks</label>
+            {% render_field questionForm.marks|attr:'required:true' class="form-control" placeholder="10" %}
+        </div>
+
+        <div class="form-group">
+            <label for="option1">Option 1</label>
+            {% render_field questionForm.option1|attr:'required:true' class="form-control" placeholder="Rupees" %}
+        </div>
+
+        <div class="form-group">
+            <label for="option2">Option 2</label>
+            {% render_field questionForm.option2|attr:'required:true' class="form-control" placeholder="Dollar" %}
+        </div>
+
+        <div class="form-group">
+            <label for="option3">Option 3</label>
+            {% render_field questionForm.option3|attr:'required:true' class="form-control" placeholder="Taka" %}
+        </div>
+
+        <div class="form-group">
+            <label for="option4">Option 4</label>
+            {% render_field questionForm.option4|attr:'required:true' class="form-control" placeholder="Euro" %}
+        </div>
+
+        <div class="form-group">
+            <label for="answer">Answer</label>
+            {% render_field questionForm.answer|attr:'required:true' class="form-control" %}
+        </div>
+
+        <div class="form-group">
+            <label for="steps">Steps</label>
+            {% render_field questionForm.option4|attr:'required:true' class="form-control" placeholder="Euro" %}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Add Question</button>
+    </form>
+</div>
+
+{% endblock content %}

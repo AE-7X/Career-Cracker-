@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% extends 'quiz/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Discussion Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("{% static 'image/a3.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .main-content {
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #3f9c9c, #49a6c0);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #34495e;
+            color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="cards">
+            <!-- Add Group Discussion Card -->
+            <div class="card">
+                <a href="{% url 'addgd' %}" style="color: white; text-decoration: none;">
+                    <h3>Add Group Discussion</h3>
+                    <p>Click here to add a new group discussion</p>
+                </a>
+            </div>
+
+            <!-- View Group Discussions Card -->
+            <div class="card">
+                <a href="{% url 'admin_viewgd' %}" style="color: white; text-decoration: none;">
+                    <h3>View Group Discussions</h3>
+                    <p>Click here to view existing discussions</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Group Discussion Dashboard</p>
+    </div>
+</body>
+</html>
+{% endblock %}

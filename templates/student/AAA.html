@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .notifications {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .notification {
+            position: relative;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slide-in 0.3s ease-out;
+        }
+
+        @keyframes slide-in {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification.success {
+            border-left: 5px solid #4CAF50;
+        }
+
+        .notification.error {
+            border-left: 5px solid #F44336;
+        }
+
+        .notification.warning {
+            border-left: 5px solid #FFC107;
+        }
+
+        .notification.info {
+            border-left: 5px solid #2196F3;
+        }
+
+        .notification .icon {
+            font-size: 20px;
+        }
+
+        .notification .content {
+            flex-grow: 1;
+        }
+
+        .notification .content h4 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .notification .content p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+
+        .notification .close-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .notification .close-btn:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="notifications" id="notifications"></div>
+
+<button onclick="addNotification('success', 'Success', 'Your action was successful!')">Add Success</button>
+<button onclick="addNotification('error', 'Error', 'Something went wrong!')">Add Error</button>
+<button onclick="addNotification('warning', 'Warning', 'Be cautious!')">Add Warning</button>
+<button onclick="addNotification('info', 'Info', 'Here is some information!')">Add Info</button>
+
+<script>
+    function addNotification(type, title, message) {
+        const notificationsContainer = document.getElementById('notifications');
+
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+
+        notification.innerHTML = `
+            <div class="icon">${getIcon(type)}</div>
+            <div class="content">
+                <h4>${title}</h4>
+                <p>${message}</p>
+            </div>
+            <button class="close-btn">&times;</button>
+        `;
+
+        notification.querySelector('.close-btn').addEventListener('click', () => {
+            notification.style.display = 'none';
+        });
+
+        notificationsContainer.appendChild(notification);
+
+        setTimeout(() => {
+            if (notification) notification.style.display = 'none';
+        }, 5000);
+    }
+
+    function getIcon(type) {
+        switch (type) {
+            case 'success': return '✅';
+            case 'error': return '❌';
+            case 'warning': return '⚠️';
+            case 'info': return 'ℹ️';
+            default: return '';
+        }
+    }
+</script>
+
+</body>
+</html>

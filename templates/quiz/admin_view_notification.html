@@ -1,0 +1,59 @@
+{% extends 'teacher/teacherbase.html' %}
+{% load static %}
+{% block content %}
+  <style>
+    .notification-list {
+      background-image: url("{% static 'image/a3.jpg' %}");
+
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    .notification-item {
+      background: #f4f4f4;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border-left: 5px solid #1066a4;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .notification-item span {
+      display: block;
+    }
+
+    h2 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 16px;
+      color: #888;
+    }
+    body {
+      background-image: url("{% static 'image/b10.jpeg' %}");
+      background-size:cover;
+      background-repeat: no-repeat;
+      /* background-attachment: fixed; */
+    }
+  </style>
+
+  <h2>Notifications</h2>
+  <div class="notification-list">
+    {% for notification in notifications %}
+      <div class="notification-item">
+        <span>{{ notification.text }}</span>
+      </div>
+    {% empty %}
+      <p>No notifications available.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

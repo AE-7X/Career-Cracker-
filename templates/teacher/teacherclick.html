@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style media="screen">
+    /* Basic Body Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url("{% static 'image/image5.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Container for content */
+    .container {
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    /* Jumbotron Styling */
+    .jumbotron {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+      border-radius: 15px;
+      padding: 40px 60px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .jumbotron h1 {
+      font-size: 3rem;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .jumbotron p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .jumbotron .btn {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      margin: 10px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+      background-color: #70b7c7;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #7bb7d1;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      position: absolute;
+      bottom: 10px;
+    }
+    body {
+      background-image: url("{% static 'image/a4.jpg' %}");
+      background-size:fill;
+      background-position:left;
+      background-repeat: no-repeat;
+      /* background-attachment: fixed; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome, Staff!</h1>
+      <p class="lead">Create your account or login to access all features.</p>
+      <a class="btn btn-primary btn-lg" href="teachersignup" role="button">Create Your Account</a>
+      <a class="btn btn-primary btn-lg" href="teacherlogin" role="button">Login</a>
+    </div>
+  </div>
+  
+  {% include "quiz/footer.html" %}
+</body>
+
+</html>

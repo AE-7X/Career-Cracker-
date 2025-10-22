@@ -1,0 +1,109 @@
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            background-image: url("{% static 'image/a10.jpg' %}");
+            background-size: contain;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: flex-end; /* Moves content to the right */
+            align-items: center;
+            margin: 0;
+            padding-right: 10%; /* Adjust for spacing from the right edge */
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 600px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .box h1 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .box p {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        input[type="submit"] {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+
+        /* Pop-up Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                justify-content: center; /* Center the card on smaller screens */
+                padding-right: 0;
+            }
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <form class="box" method="post">
+            {% csrf_token %}
+            <h1>Student Login</h1>
+            <p class="text-muted"> Please enter your login and password!</p>
+
+            {% render_field form.username class="form-control" placeholder="Username" %}
+            {% render_field form.password class="form-control" placeholder="Password" %}
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Welcome User</title>
+
+  <style>
+    /* Background Styling */
+    body {
+      background-image: url("{% static 'image/a4.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Pop-up Modal */
+    .popup-card {
+      background: rgba(89, 190, 234, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: scale(0.8);
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+
+    /* Heading Styling */
+    .popup-card h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #20c8f7, #4cdad0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Lead Paragraph */
+    .popup-card p.lead {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #3c3a3a;
+    }
+
+    /* Button Styling */
+    .btn {
+      font-size: 1.2em;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #007bff, #00c6ff);
+      border: none;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #0056b3, #0084cc);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Animation for Pop-up */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .popup-card {
+        width: 90%;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="popup-card">
+    <h1>Welcome User</h1>
+    <p class="lead">Join us to start your journey towards success.</p>
+    <p>
+      <a class="btn btn-primary" href="studentsignup">Create Your Account</a>
+      <a class="btn btn-primary" href="studentlogin">Login</a>
+    </p>
+  </div>
+</body>
+
+</html>

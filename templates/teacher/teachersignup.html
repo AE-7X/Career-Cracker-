@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Staff Signup</title>
+
+    <style>
+        /* Global Styles */
+        body {
+            background-image: url("{% static 'image/b3.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: rgba(127, 187, 217, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 85%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        /* Form Styling */
+        .form-layout {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .form-section {
+            width: 48%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            width: 30%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Warning Message */
+        .warning {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Pop-up Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-layout {
+                flex-direction: column;
+            }
+
+            .form-section {
+                width: 100%;
+            }
+
+            .btn-primary {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        function validatePhoneNumber() {
+            const phoneInput = document.getElementById('mobile');
+            const warningText = document.getElementById('phone-warning');
+            const phonePattern = /^[0-9]{10}$/;
+
+            if (!phonePattern.test(phoneInput.value)) {
+                warningText.style.display = 'block';
+                return false;
+            } else {
+                warningText.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateForm(event) {
+            if (!validatePhoneNumber()) {
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="form-container">
+        <h3>Staff Signup</h3>
+        <form method="POST" autocomplete="off" enctype="multipart/form-data" onsubmit="validateForm(event)">
+            {% csrf_token %}
+
+            <div class="form-layout">
+                <!-- Left Section -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        {% render_field userForm.username|attr:'required:true' class="form-control" placeholder="Enter username" %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword4">Password</label>
+                        {% render_field userForm.password|attr:'required:true' class="form-control" placeholder="Enter password" %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        {% render_field userForm.first_name|attr:'required:true' class="form-control" placeholder="Enter first name" %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        {% render_field userForm.last_name|attr:'required:true' class="form-control" placeholder="Enter last name" %}
+                    </div>
+                </div>
+
+                <!-- Right Section -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="mobile">Mobile</label>
+                        {% render_field teacherForm.mobile|attr:'required:true' id="mobile" class="form-control" placeholder="Enter mobile number" oninput="validatePhoneNumber()" %}
+                        <span id="phone-warning" class="warning">Phone number must be exactly 10 digits.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qualification">Qualification</label>
+                        {% render_field teacherForm.address|attr:'required:true' class="form-control" placeholder="Enter qualification" %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profile_pic">Certificate</label>
+                        {% render_field teacherForm.profile_pic|attr:'required:true' class="form-control" %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

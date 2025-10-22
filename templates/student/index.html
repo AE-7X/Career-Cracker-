@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Predictor</title>
+    <style>
+        a:link {
+            text-decoration: none;
+        }
+
+        body {
+            
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'image/image5.jpg' %}");
+            background-size: cover;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            position: fixed;
+            background: #969ba9;
+            padding: 10px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .left_area h3 {
+            color: #fff;
+            margin: 0px;
+            text-transform: uppercase;
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .sidebar {
+            background: #2f323a;
+            padding-top: 30px;
+            position: fixed;
+            left: 0;
+            top: 50px;
+            width: 250px;
+            height: calc(100% - 50px);
+            transition: 0.5s;
+        }
+
+        .sidebar a {
+            color: #fff;
+            display: block;
+            width: 100%;
+            line-height: 50px;
+            text-decoration: none;
+            padding-left: 30px;
+            transition: 0.5s;
+        }
+
+        .sidebar a:hover {
+            background: #19B3D3;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 80px 20px 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            width: 100%;
+            background-color: #ff7e5f;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        body {
+      background-image: url("{% static 'image/a6.jpg' %}");
+      background-size:contain;
+      background-repeat: no-repeat;
+      /* background-attachment: fixed; */
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="left_area">
+            <h3>College Career Cracker</h3>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <a href="/student/student-dashboard">Dashboard</a>
+        <a href="/student/student-exam">Aptitude Exam</a>
+        <a href="/student/student-marks">Marks</a>
+        <a href="/student/student-feedback">Feedback</a>
+        <a href="/add_institution/student_view_institution">Institution</a>
+        <a href="{% url 'career_prediction' %}">Career</a>
+        <a href="/view_discussion">Group Discussion</a>
+        <a href="{% url 'student_view_notification' %}">Notification</a>
+        <a href="{% url 'custom_logout' %}">Logout</a>
+    </div>
+
+    <div class="content">
+        <form method="post">
+            <h1>Career Prediction Form</h1>
+            {% csrf_token %}
+            {% for skill, label in skill_labels.items %}
+                <label for="{{ skill }}">{{ label }}</label>
+                <select name="{{ skill }}" id="{{ skill }}">
+                    <option value="0">Professional</option>
+                    <option value="1">Not Interested</option>
+                    <option value="2">Poor</option>
+                    <option value="3">Beginner</option>
+                    <option value="4">Average</option>
+                    <option value="5">Intermediate</option>
+                    <option value="6">Excellent</option>
+                </select>
+            {% endfor %}
+            <button type="submit">Predict Career</button>
+        </form>
+    </div>
+</body>
+</html>

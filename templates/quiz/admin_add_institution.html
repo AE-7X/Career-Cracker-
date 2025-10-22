@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Institution</title>
+    <style>
+        .form-container {
+            background-color: #f5f2f2;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #0f0f0f;
+            border-radius: 8px;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #f7f5f5;
+            border-radius: 4px;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        body {
+      background-image: url("{% static 'image/b2.jpg' %}");
+      background-size:cover;
+      background-repeat: no-repeat;
+      /* background-attachment: fixed; */
+    }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add New Institution</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Renders all form fields automatically -->
+            <button type="submit">Add Institution</button>
+        </form>
+        <br>
+        <a href="{% url 'admin_add_institution' %}">Back to Institution List</a>
+    </div>
+</body>
+</html>

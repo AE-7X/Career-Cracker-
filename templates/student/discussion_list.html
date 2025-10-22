@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Discussions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">All Group Discussions</h1>
+
+        {% if discussions %}
+            <ul class="list-group">
+                {% for discussion in discussions %}
+                    <li class="list-group-item">
+                        <h4>{{ discussion.title }}</h4>
+                        <p><strong>Date:</strong> {{ discussion.date }}</p>
+                        <p><strong>Time:</strong> {{ discussion.time }}</p>
+                        <p><strong>Google Meet Link:</strong> <a href="{{ discussion.link }}" target="_blank">{{ discussion.link }}</a></p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No discussions available.</p>
+        {% endif %}
+
+        <a href="{% url 'teacher-dashboard' %}" class="btn btn-primary mt-3">Back to Discussions</a>
+    </div>
+</body>
+</html>

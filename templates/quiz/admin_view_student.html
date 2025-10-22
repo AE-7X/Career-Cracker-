@@ -1,0 +1,165 @@
+{% extends 'quiz/adminbase.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    /* General Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    h6 {
+      text-align: center;
+      color: #0056b3;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .table-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* Table Panel Styling */
+    .panel-primary {
+      border-color: #0056b3;
+      border-width: 2px;
+    }
+
+    .panel-primary > .panel-heading {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /* Table Styling */
+    .table {
+      width: 100%;
+      border: 3px solid #0056b3; /* Bold table border */
+      border-radius: 5px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #fefefe;
+    }
+
+    .table thead th {
+      background-color: #0056b3;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+      border: 2px solid #004494;
+      padding: 12px;
+    }
+
+    .table tbody tr {
+      transition: all 0.3s ease;
+      border-bottom: 2px solid #ddd; /* Subtle border between rows */
+    }
+
+    .table tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .table td {
+      text-align: center;
+      vertical-align: middle;
+      font-size: 1.2rem;
+      padding: 15px;
+      border: 2px solid #ddd; /* Make table cell borders bold */
+    }
+
+    .table td img {
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Button Styling */
+    .btn-primary {
+      background-color: #15ab4b;
+      border: 2px solid #0056b3;
+      font-size: 1rem;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    .btn-danger {
+      background-color: #e63946;
+      border: 2px solid #c82333;
+      font-size: 1rem;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Total Students List
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Profile Picture</th>
+          <th>Mobile</th>
+          <th>Address</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for t in students %}
+        <tr>
+          <td><strong>{{ t.get_name }}</strong></td>
+          <td>
+            <img src="{{ t.profile_pic.url }}" alt="Profile Pic" height="40px" width="40px" />
+          </td>
+          <td><strong>{{ t.mobile }}</strong></td>
+          <td><strong>{{ t.address }}</strong></td>
+          <td>
+            <a class="btn btn-primary btn-xs" href="{% url 'update-student' t.id %}">
+              <span class="glyphicon glyphicon-edit"></span>
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-danger btn-xs" href="{% url 'delete-student' t.id %}">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

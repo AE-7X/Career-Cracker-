@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<style>
+        .xyz{
+          margin-bottom: 0px;
+          background-image: url('{% static "image/anu.png" %}');
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+</style>
+<body>
+  {% include "quiz/navbar.html" %}
+  <br>
+  <!-- <img src="{% static "image/anu.png" %}"  style="width:800px; height:100px; padding-left:400px;"> -->
+
+<section id="section-jumbotron" style="margin-bottom: 0px;" class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center xyz">
+  <div class="container text-center">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+  </div>  
+</section>
+
+
+<div class="jumbotron" style="margin-top: 0px;margin-bottom: 0px;">
+
+  <p class="lead text-center"> “Opportunities don't happen,you create them.”
+    </p>
+  
+  <p class="text-center">- Chris Grosser</p>
+  
+</div>
+{% include "quiz/footer.html" %}
+
+</body>
+
+</html>

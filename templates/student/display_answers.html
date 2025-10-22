@@ -1,0 +1,133 @@
+{% block content %}
+  <h2 class="text-center mb-5">Answers for Course: {{ course.course_name }}</h2>
+
+  <div class="container">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <table class="table table-responsive table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Question</th>
+              <th>Options</th>
+              <th>Correct Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for question in questions %}
+              <tr>
+                <td>{{ question.question }}</td>
+                <td>
+                  <ul>
+                    <li><strong>Option 1:</strong> {{ question.option1 }}</li>
+                    <li><strong>Option 2:</strong> {{ question.option2 }}</li>
+                    <li><strong>Option 3:</strong> {{ question.option3 }}</li>
+                    <li><strong>Option 4:</strong> {{ question.option4 }}</li>
+                  </ul>
+                </td>
+                <td class="text-center">{{ question.answer }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+<style>
+  /* Basic layout and spacing */
+  body {
+    background-color: #f4f6f9;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .container {
+    margin-top: 50px;
+  }
+
+  /* Heading Styling */
+  h2 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #3c4b6e;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  /* Card Styling */
+  .card {
+    border-radius: 10px;
+    border: none;
+  }
+
+  .card-body {
+    padding: 30px;
+  }
+
+  /* Table Styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .table th, .table td {
+    padding: 15px;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+    text-align: left;
+  }
+
+  .table th {
+    background-color: #343a40;
+    color: white;
+    font-weight: bold;
+  }
+
+  .table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Styling for list items under options */
+  .table ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+
+  .table ul li {
+    list-style-type: none;
+    font-size: 14px;
+    padding: 5px 0;
+  }
+
+  .table ul li strong {
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  /* Centering correct answers */
+  .table td.text-center {
+    text-align: center;
+  }
+
+  /* Styling for the correct answers */
+  .table td.text-center {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .table {
+      font-size: 14px;
+    }
+
+    .table th, .table td {
+      padding: 10px;
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+  }
+</style>
